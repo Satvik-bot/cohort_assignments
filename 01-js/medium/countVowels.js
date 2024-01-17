@@ -1,12 +1,13 @@
 /*
-  Implement a function `countVowels` that takes a string as an argument and returns the number of vowels in the string.
-  Note: Consider both uppercase and lowercase vowels ('a', 'e', 'i', 'o', 'u').
-
-  Once you've implemented the logic, test your code by running
+  Implement a function `isPalindrome` which takes a string as argument and returns true/false as its result.
+  Note: the input string is case-insensitive which means 'Nan' is a palindrom as 'N' and 'n' are considered case-insensitive.
 */
 
-function countVowels(str) {
-    // Your code here
+function isPalindrome(str) {
+  str = str.toLowerCase()
+  let reverseString = [...str].reverse().toLowerCase().join("");
+  if (reverseString !== str) return false
+  return true;
 }
 
-module.exports = countVowels;
+module.exports = isPalindrome;

@@ -9,5 +9,17 @@ There is no automated test for this one, this is more for you to understand time
 */
 
 function calculateTime(n) {
+    let a=0;
+    let initialTime = performance.now();
+    
+    for(let i=0; i<n; i++) {
+        a=a+i;
+    }
+    
+    let finalTime = performance.now();
+    
+    console.log(finalTime-initialTime + "ms");
     return 0.01;
 }
+
+calculateTime(1000000)

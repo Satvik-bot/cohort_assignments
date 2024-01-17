@@ -4,6 +4,9 @@
 */
 
 function isPalindrome(str) {
+  str = str.toLowerCase()
+  let reverseString = [...str].reverse().toLowerCase().join("");
+  if (reverseString !== str) return false
   return true;
 }
 

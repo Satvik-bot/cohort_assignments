@@ -16,6 +16,12 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  constructor() {
+    this.result = result
+  }
+
+  
+} 
 
 module.exports = Calculator;

@@ -1,0 +1,184 @@
+{
+  "main": {
+    "id": "5bcf2f3366c6deb3",
+    "type": "split",
+    "children": [
+      {
+        "id": "6347e83978b6811a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "41d05583214411f7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Week 3/Zod.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "918ceb478cc242fa",
+    "type": "split",
+    "children": [
+      {
+        "id": "d13de0eb50fd5142",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e63094377a9981bd",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "bd40ae3dd76d2749",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#DRY",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "45275b0819346f10",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "66cb3889bd0e9a33",
+    "type": "split",
+    "children": [
+      {
+        "id": "f10b6510a37edb05",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "466d2078785e327f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Week 3/Zod.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "52bf4525c62e7769",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Week 3/Zod.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4c25497a89a56fa1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "47d9cd2733f042a2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Week 3/Zod.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "41d05583214411f7",
+  "lastOpenFiles": [
+    "Week 3/Middlewares and global catches.md",
+    "Week 3/index.js.md",
+    "Week 3/Global Catches.md",
+    "Week 3/Zod.md",
+    "o.md",
+    "Week 1/1.5. Async, Await and Promises.md",
+    "01-js/medium/palindrome.js.md",
+    "Week 3",
+    "Week 2/2.2 HTTP.md",
+    "Week 2/Map, Filter, Arrow fns.md",
+    "Week 2/Web server in C++",
+    "Week 2/2.5 Express.md",
+    "Week 1/questions/JS Execution Time.md",
+    "01-js/Pasted image 20240106200241.png",
+    "Week 1/questions/Terminal clock 🕐.md",
+    "Week 1/Foundation 🏠.md",
+    "Week 2/Async vs sync review.md",
+    "Week 2",
+    "Async vs sync review.md",
+    "Async, Await, Promises/UntitledUntitled.md",
+    "Async, Await, Promises",
+    "Untitled.canvas",
+    "01-js/easy/anagram.js.md",
+    "01-js/medium/countVowels.js.md",
+    "01-js/easy/findLargestElement.js.md",
+    "01-js/easy/expenditure-analysis.js.md",
+    "01-js/hard",
+    "01-js/medium",
+    "01-js/easy",
+    "01-js",
+    "Week 1/questions",
+    "Week 1"
+  ]
+}

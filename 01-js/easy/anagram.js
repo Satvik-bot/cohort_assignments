@@ -5,7 +5,19 @@
 */
 
 function isAnagram(str1, str2) {
+  let n1 = str1.length;
+  let n2 = str2.length;
+   
+  if (n1 != n2)
+      return false;
 
+  str1 = [...str1].sort
+  console.log(str1);
+  str1 = [...str2].sort
+  console.log(str2);
+
+  if(str1.toString() === str2.toString()) return false;
+  return true;
 }
 
 module.exports = isAnagram;

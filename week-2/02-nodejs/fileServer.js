@@ -1,21 +1,191 @@
 /**
-  You need to create an express HTTP server in Node.js which will handle the logic of a file server.
-  - Use built in Node.js `fs` module
-  The expected API endpoints are defined below,
-  1. GET /files - Returns a list of files present in `./files/` directory
-    Response: 200 OK with an array of file names in JSON format.
-    Example: GET http://localhost:3000/files
-  2. GET /file/:filename - Returns content of given file by name
-     Description: Use the filename from the request path parameter to read the file from `./files/` directory
-     Response: 200 OK with the file content as the response body if found, or 404 Not Found if not found. Should return `File not found` as text if file is not found
-     Example: GET http://localhost:3000/file/example.txt
-    - For any other route not defined in the server return 404
-    Testing the server - run `npm run test-fileServer` command in terminal
+const http = require('http');
+const path = require('path');
+const fs = require('fs');
+const server = require('../fileServer');
+
+describe('API Endpoints', () => {
+  let globalServer;
+
+  beforeAll((done) => {
+    if (globalServer) {
+        globalServer.close();
+    }
+    globalServer = server.listen(3000);
+    done()
+  });
+
+  afterAll((done) => {
+    globalServer.close(done);
+  });
+
+  describe('GET /files', () => {
+    test('should return a list of files', async () => {
+        const options = {
+          method: 'GET',
+          path: '/files'
+        };
+      const response = await sendRequest(options);
+
+      expect(response.statusCode).toBe(200);
+      expect(response.body.length).toBeGreaterThan(2);
+    });
+
+    test('should handle internal server error', async () => {
+      const options = {
+        method: 'GET',
+        path: '/files'
+      };
+
+      const directoryPath = path.resolve(__dirname, '../files/');
+      jest
+        .spyOn(fs, 'readdir')
+        .mockImplementation((directoryPath, callback) => {
+          callback(new Error('Mocked Internal Server Error'), null);
+        });
+
+      const response = await sendRequest(options);
+
+      expect(response.statusCode).toBe(500);
+
+      fs.readdir.mockRestore();
+    });
+  });
+
+  describe('GET /file/:filename', () => {
+    const testFilePath = path.join(__dirname, '../files', 'test-file.txt');
+
+    beforeAll(() => {
+      fs.writeFileSync(testFilePath, 'Test file content');
+    });
+
+    afterAll(() => {
+      fs.unlinkSync(testFilePath);
+    });
+
+    test('should serve the requested file', async () => {
+      const options = {
+        method: 'GET',
+        path: '/file/test-file.txt'
+      };
+      const response = await sendRequest(options);
+
+      expect(response.statusCode).toBe(200);
+      expect(response.body).toBe('Test file content');
+    });
+
+    test('should handle file not found', async () => {
+      const options = {
+        method: 'GET',
+        path: '/file/non-existing-file.txt'
+      };
+      const response = await sendRequest(options);
+
+      expect(response.statusCode).toBe(404);
+      expect(response.body).toBe('File not found');
+    });
+
+  });
+
+  describe('Invalid Routes', () => {
+    test('should return 404 for invalid routes', async () => {
+      const options = {
+        method: 'GET',
+        path: '/invalid'
+      };
+      const response = await sendRequest(options);
+
+      expect(response.statusCode).toBe(404);
+      expect(response.body).toBe("Route not found");
+    });
+  });
+});
+
+
+
+function sendRequest(options, requestBody) {
+  return new Promise((resolve, reject) => {
+    const req = http.request(
+      {
+        ...options,
+        host: 'localhost',
+        port: 3000,
+      },
+      (res) => {
+        let body = '';
+
+        res.on('data', (chunk) => {
+          body += chunk;
+        });
+
+        res.on('end', () => {
+          resolve({
+            statusCode: res.statusCode,
+            headers: res.headers,
+            body,
+          });
+        });
+      }
+    );
+
+    req.on('error', (err) => {
+      reject(err);
+    });
+
+    if (requestBody) {
+      req.write(requestBody);
+    }
+
+    req.end();
+  });
+}
  */
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
+const port = 3001;
+    
+    
+    // 1. GET 200 OK with array of files in directory '/files'
+    const directory = '/files'
+    app.get(directory, (req, res) => {
+      const directoryPath = path.join(__dirname, directory);
+    
+      fs.readdir(directoryPath, (err, files) =>{
+    
+        if (err) {
+          // console.error('Error reading directory:', err);
+          res.status(500).send('Internal Server Error');
+          return;
+        }
+    
+        const fileList = files.map(file => {
+          return file;
+        })
+    
+        res.status(200).json(fileList);
+      });
+    })
 
+    // 2. GET /file/:filename - Returns content of given file by name
+    app.get("/files/:filename", (req, res) => {
+      const name = req.params.filename 
+      console.log(name)
 
-module.exports = app;
+      fs.readFile(name, "utf-8", (err, data) => {
+        if (err) {
+          res.sendStatus(404)
+        }
+        res.status(200)
+        res.send(data)
+      })
+    })
+    
+    // Any other req gets blocked
+    app.use('*', (req, res) => {
+      res.status(404).send('Route not found');
+    });
+
+    app.listen(port);
+    module.exports = app;
