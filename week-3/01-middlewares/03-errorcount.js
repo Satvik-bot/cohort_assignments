@@ -23,4 +23,10 @@ app.get('/errorCount', function(req, res) {
   res.status(200).json({ errorCount });
 });
 
+// Global Catches
+app.use(function(err, req, res, next) {
+	errorCount++   // for the developer
+	res.status(404).send("Not Found")
+})
+
 module.exports = app;

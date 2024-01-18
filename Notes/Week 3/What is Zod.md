@@ -53,6 +53,7 @@ A better way to define a schema for more number of input fields such as
 2. password
 3. country ("IN" OR "US")
 4. kidneys
+Example[[zod-middleware example]]
 
 ```
 const schema = zod.object ({
@@ -67,3 +68,4 @@ const schema = zod.object ({
 
 `z.string().email()`
 `z.string().min(8)` -> password minimum 8 characters
+()

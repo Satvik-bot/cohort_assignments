@@ -84,22 +84,9 @@ Hence, we need to specify using express.json() for an expected body with any of 
 #Assignments: 
 1. Count the number of requests
 2. Find the average time your server is taking to handle requests
-
+Answer [[Middleware_questions]]
 ------
 
-#Answer : 
-1. Create a function called totalNumberOfRequests with the logic and it should execute everytime any route gets called.
-2. Hence, the use of app.use()
-```
-let count = 0
-function totalNumberOfRequests(req, res, next) {
-  count++
-  console.log(count)
-  next()
-}
-
-app.use(totalNumberOfRequests)
-```
 
 ------
 

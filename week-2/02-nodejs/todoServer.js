@@ -43,7 +43,70 @@
   const bodyParser = require('body-parser');
   
   const app = express();
-  
+  const port = 3001;
   app.use(bodyParser.json());
   
+  const todo = []
+
+  // 1. GET /todos - Retrieve all todo items ✅
+  app.get('/todos', async (req, res) => {
+    res.json(todo)
+  })
+
+  // 2. /todos/:id - Retrieve a specific todo item by ID
+  app.get('/todos/:id', async (req, res) => {
+    const todos = todo.find((todo) => todo.id === parseInt(req.params.id));
+    if (!todos) {
+      return res.status(404).send('Todo not found');
+    }
+    res.status(200).json(todos);
+  })
+
+  // 3. POST /todos - Create a new todo item ✅
+  app.post('/todos', async (req, res) => {
+    // Generate a random number between 10 and 99 (inclusive)
+    const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;
+
+    const todoObject = req.body
+
+    const newtodo = {
+      title:todoObject.title,
+      description:todoObject.description,
+      completed: false,
+      id:`${randomTwoDigitNumber}`
+    }
+
+    todo.push(newtodo)
+
+    res.status(201).json({id:randomTwoDigitNumber})
+  })
+
+
+  // 4. PUT /todos/:id - Update an existing todo item by ID ✅
+  app.put('/todos/:id', async (req, res) => {
+    const newTodo = req.body;
+    const id = req.params.id;
+
+    const foundTodo = todo.find(todo => todo.id === id);
+
+    if (foundTodo) {
+      foundTodo.title = newTodo.title;
+      foundTodo.description = newTodo.description;
+
+      res.status(200).json(foundTodo);
+    } else {
+      res.status(404).send("404 Not Found");
+  }
+  })
+
+  app.delete('/todos/:id', async (req, res) => {
+    const Newtodo = todo.find((todo) => todo.id === parseInt(req.params.id));
+    if(!Newtodo) {
+      return res.status(404).send('Todo not found');
+    }
+    todo.splice(todo.indexOf(Newtodo), 1);
+    res.status(200).json(todo);
+  })
+
+  app.listen(port)
   module.exports = app;
