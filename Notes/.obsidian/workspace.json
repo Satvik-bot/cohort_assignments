@@ -133,7 +133,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -145,7 +146,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e63094377a9981bd",
+  "active": "dd854d905f083df7",
   "lastOpenFiles": [
     "Week 3/Authentication.md",
     "Untitled.md",
