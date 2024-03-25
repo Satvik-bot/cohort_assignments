@@ -1,0 +1,26 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 20px;
+}
+
+
+.wrapper {
+    display: flex;
+    margin: 15px;
+    padding: 15px;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 2px yellowgreen;
+    border-radius: 10px;
+    max-width: 55%;
+    margin-left: 23%;
+}
+
+.socials {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    background-color: lightblue;
+    border-radius: 7px;
+}

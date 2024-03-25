@@ -1,23 +1,22 @@
+const jwt = require('jsonwebtoken')
+const {JSON_SECRET} = require("../config")
+ 
 // Middleware for handling auth
 function adminMiddleware(req, res, next) {
     // Implement admin auth logic
     // You need to check the headers and validate the admin from the admin DB. Check readme for the exact headers to be expected
-    const username = req.headers.username;
-    const password = req.headers.password;
-    Admin.findOne({
-        username: username,
-        password: password
-    })
-    .then((value) => {
-        if(value) {
-            next();
-        }
-        else{
-            res.status(403).json({
-                msg: "Admin doesn't exist"
-            })
-        }
-    })
+    const token = req.headers.authorization
+    const words = token.split(" ")
+
+    try {
+        const verified = jwt.verify(words[3], JSON_SECRET)
+    } catch (error) {
+        res.status(403).json({
+            msg: "You are not authorized"
+        })
+    }
+    
+    next();
 }
 
 module.exports = adminMiddleware;

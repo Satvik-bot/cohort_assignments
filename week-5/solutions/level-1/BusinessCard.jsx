@@ -1,7 +1,19 @@
 export function BusinessCard(props) {
     return (
       <div style={styles.card}>
-        <h2 style={styles.name}>{props.name}</h2>
+        <h2 style={<div>
+        <h1>{props.name}</h1>
+        <h3 style={{fontWeight:"normal"}}>{props.description}</h3>
+        <h2>Interests</h2>
+        <ul>{props.interests.map((interest)=> {
+          <li key={interest}>{interest}</li>
+          })}
+        </ul>
+        <div className="socials">
+        <button className='btn'>LinkedIn</button>
+        <button className='btn'>Twitter</button>
+        </div>
+    </div>.name}>{props.name}</h2>
         <p style={styles.description}>{props.description}</p>
         <h3 style={styles.interestsHeader}>Interests</h3>
         <ul style={styles.interestsList}>
@@ -28,7 +40,7 @@ export function BusinessCard(props) {
       </div>
     );
   }
-  
+
   // Styles
   const styles = {
     card: {
