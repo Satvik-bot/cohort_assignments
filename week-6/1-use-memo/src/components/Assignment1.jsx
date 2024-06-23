@@ -5,20 +5,12 @@ import { useMemo, useState } from "react";
 
 export function Assignment1() {
     const [input, setInput] = useState(0);
-    const [answer, setAnswer] = useState(0);
+
     // Your solution starts here
-    const factorial = (n) =>{
-        let result = 1;
-        for(let i=2; i<=n; i++){
-            result *= i;
-        }
-        return result
-    }
 
     const expensiveValue = useMemo(() => {
         return factorial(input)
     }, [input]);
-
     // Your solution ends here
 
     return (
@@ -27,8 +19,15 @@ export function Assignment1() {
                 type="number"
                 value={input}
                 onChange={(e) =>setInput(e.target.value)}
-            />
+                />
             <p>Calculated Value: {expensiveValue}</p>
         </div>
     );
+}
+const factorial = (n) =>{
+    let result = 1;
+    for(let i=2; i<=n; i++){
+        result *= i;
+    }
+    return result
 }
